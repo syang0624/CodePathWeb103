@@ -1,0 +1,54 @@
+/* Resets some default padding/margin */
+body, h1, nav, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif; /* Ensures consistent font across devices */
+}
+
+.header-container {
+  display: flex;
+  justify-content:stretch;
+  align-items: center;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  text-align: center;
+  margin: 15px; /* Centers the logo and heading */
+}
+
+img {
+  max-width: 100%; /* Ensures the image is responsive */
+  height: auto;
+  width: 120px; /* Adjust the logo size as needed */
+}
+
+h1 {
+  color: #333; /* Dark grey color for the text */
+  font-size: 5vh; /* Larger font size for the heading */
+}
+
+.header-right {
+  flex-grow: 1; /* Same as header-left for balance */
+  text-align: right;
+  align-items: end; /* Centers the home button */
+  margin: 15px;
+  margin-right: 4vw;
+  
+}
+
+.home {
+  display: inline-block;
+  color: #002d5d;
+  padding: 10px 20px; /* Padding inside the button */
+  text-decoration: none; /* Removes underline from links */
+  border: 3px solid #002d5d;
+  border-radius: 5px; /* Rounded corners for the button */
+  font-size: 3vh; /* Adjust font size for the button */
+  cursor: pointer; /* Changes cursor to pointer when hovering over the button */
+}
