@@ -1,4 +1,4 @@
-# WEB103 Project 2 - _Name of App Here_
+# WEB103 Project 2 - Have you been to?
 
 Submitted by: **Steven Yang**
 
