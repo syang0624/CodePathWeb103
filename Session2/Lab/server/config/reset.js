@@ -1,6 +1,6 @@
-import pool from "./database";
+import pool from "./database.js";
 import "./dotenv.js";
-import { giftData } from "../data/gifts.js";
+import giftData from "../data/gifts.js";
 
 const createGiftsTable = async () => {};
 
@@ -42,15 +42,15 @@ const seedGiftsTable = async () => {
             gift.submittedBy,
             gift.submittedOn,
         ];
-    });
-
-    pool.query(insertQuery, values, (err, res) => {
-        if (err) {
-            console.error("⚠️ error inserting gift", err);
-            return;
-        }
-
-        console.log(`✅ ${gift.name} added successfully`);
+        
+        pool.query(insertQuery, values, (err, res) => {
+            if (err) {
+                console.error("⚠️ error inserting gift", err);
+                return;
+            }
+    
+            console.log(`✅ ${gift.name} added successfully`);
+        });
     });
 };
 

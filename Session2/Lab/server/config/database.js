@@ -7,4 +7,6 @@ const config = {
     connectionString: process.env.DATABASE_PUBLIC_URL,
 };
 
-export const pool = new pg.Pool(config);
+const pool = new pg.Pool(config)
+
+export default pool;
