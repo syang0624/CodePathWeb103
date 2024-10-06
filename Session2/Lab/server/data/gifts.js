@@ -91,4 +91,4 @@ const giftData = [
     }
   ]
   
-  export default giftData
+export default giftData;
