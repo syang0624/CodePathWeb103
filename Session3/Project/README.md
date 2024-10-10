@@ -13,12 +13,12 @@ The following **required** functionality is completed:
 <!-- Make sure to check off completed functionality below -->
 
 -   [x] **The web app uses React to display data from the API**
--   [ ] **The web app is connected to a PostgreSQL database, with an appropriately structured Events table**
-    -   [ ] **NOTE: Your GIF or a screenshot added to this README must include a view of your Railway database that shows the contents of the table used by your app**
--   [ ] **The web app displays the title of the app**
--   [ ] **A visual interface allows the user to select a Location they would like to view**
--   [ ] **Clicking on a Location shows a list of all items from the Events table that corresponds to that Location**
--   [ ] **Each Location detail page should have its own unique URL**
+-   [x] **The web app is connected to a PostgreSQL database, with an appropriately structured Events table**
+    -   [x] **NOTE: Your GIF or a screenshot added to this README must include a view of your Railway database that shows the contents of the table used by your app**
+-   [x] **The web app displays the title of the app**
+-   [x] **A visual interface allows the user to select a Location they would like to view**
+-   [x] **Clicking on a Location shows a list of all items from the Events table that corresponds to that Location**
+-   [x] **Each Location detail page should have its own unique URL**
 
 The following **optional** features are implemented:
 
