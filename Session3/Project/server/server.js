@@ -1,36 +1,31 @@
-import express from 'express'
-import path from 'path'
-import favicon from 'serve-favicon'
-import dotenv from 'dotenv'
+// server/server.js
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
 
-// import the router from your routes file
+dotenv.config();
 
+const app = express();
 
-dotenv.config()
+// Middleware
+app.use(cors());
+// or, to specify allowed origins:
+app.use(
+    cors({
+        origin: "http://localhost:5173", // Adjust to your frontend's origin
+    })
+);
 
-const PORT = process.env.PORT || 3000
+// Import Routes
+import eventsRoutes from "./routes/eventsRoutes.js";
+import locationsRoutes from "./routes/locationsRoutes.js";
 
-const app = express()
+// Use Routes
+app.use("/api/events", eventsRoutes);
+app.use("/api/locations", locationsRoutes);
 
-app.use(express.json())
-
-if (process.env.NODE_ENV === 'development') {
-    app.use(favicon(path.resolve('../', 'client', 'public', 'party.png')))
-}
-else if (process.env.NODE_ENV === 'production') {
-    app.use(favicon(path.resolve('public', 'party.png')))
-    app.use(express.static('public'))
-}
-
-// specify the api path for the server to use
-
-
-if (process.env.NODE_ENV === 'production') {
-    app.get('/*', (_, res) =>
-        res.sendFile(path.resolve('public', 'index.html'))
-    )
-}
-
+// Start the Server
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`server listening on http://localhost:${PORT}`)
-})
+    console.log(`Server is running on port ${PORT}`);
+});
