@@ -1,8 +1,10 @@
-const API_BASE_URL = "/api/events";
+// EventsAPI.jsx
+
+const API_URL = "/api/events";
 
 export const getAllEvents = async () => {
     try {
-        const response = await fetch(API_BASE_URL);
+        const response = await fetch(API_URL);
         const data = await response.json();
         return data;
     } catch (err) {
@@ -12,7 +14,7 @@ export const getAllEvents = async () => {
 
 export const getEventsById = async (id) => {
     try {
-        const response = await fetch(`${API_BASE_URL}/${id}`);
+        const response = await fetch(`${API_URL}/${id}`);
         const data = await response.json();
         return data;
     } catch (err) {
@@ -20,4 +22,14 @@ export const getEventsById = async (id) => {
     }
 };
 
-export default { getAllEvents, getEventsById };
+export const getEventsByLocationSlug = async (slug) => {
+    try {
+        const response = await fetch(`/api/locations/${slug}/events`);
+        const data = await response.json();
+        return data;
+    } catch (err) {
+        console.error(err);
+    }
+};
+
+export default { getAllEvents, getEventsById, getEventsByLocationSlug };

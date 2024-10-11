@@ -1,8 +1,14 @@
 import express from "express";
-import { getEvents, getEventsById } from "../controllers/eventsController.js";
+import {
+    getEvents,
+    getEventById,
+    getEventsByLocationSlug,
+} from "../controllers/eventsController.js";
 
-const eventRouter = express.Router();
-eventRouter.get("/events", getEvents);
-eventRouter.get("/events/:id", getEventsById);
+const router = express.Router();
 
-export default eventRouter;
+router.get("/events", getEvents);
+router.get("/events/:id", getEventById);
+router.get("/locations/:slug/events", getEventsByLocationSlug);
+
+export default router;

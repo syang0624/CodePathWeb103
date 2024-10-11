@@ -1,8 +1,8 @@
-const API_BASE_URL = "/api/events";
+const API_URL = "/api/locations";
 
 export const getAllLocations = async () => {
     try {
-        const response = await fetch(API_BASE_URL);
+        const response = await fetch(API_URL);
         const data = await response.json();
         return data;
     } catch (err) {
@@ -12,7 +12,7 @@ export const getAllLocations = async () => {
 
 export const getLocationById = async (id) => {
     try {
-        const response = await fetch(`${API_BASE_URL}/${id}`);
+        const response = await fetch(`${API_URL}/${id}`);
         const data = await response.json();
         return data;
     } catch (err) {

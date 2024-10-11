@@ -1,0 +1,51 @@
+/* Event page layout */
+.body {
+    overflow-y: scroll;
+}
+
+.events-page {
+    width: 100%;
+    text-align: center;
+    background-color: transparent;
+}
+
+/* Dropdown and button controls */
+.event-controls {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.event-location-dropdown {
+    margin-left: 5%;
+    padding: 10px;
+    font-size: 1.2rem;
+    border: 2px solid #ff00ff;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.show-all-events-btn {
+    width: 30%;
+    background-color: #ff00ff;
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.show-all-events-btn:hover {
+    background-color: #ff66ff;
+}
+
+/* Responsive grid for events */
+.events-grid {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}

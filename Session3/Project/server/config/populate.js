@@ -5,20 +5,20 @@ const populate = async () => {
         // Insert locations
         await pool.query(`
       INSERT INTO locations (name, address, city, state, zip, image) VALUES
-      ('Sunset Terrace', '456 Ocean Dr', 'Miami', 'FL', '33139', '/images/sunset_terrace.jpg'),
-      ('Jazz Club', '789 Music Ln', 'New Orleans', 'LA', '70116', '/images/jazz_club.jpg'),
-      ('Rock Arena', '2020 Stage Rd', 'Austin', 'TX', '78701', '/images/rock_arena.jpg'),
-      ('Grand Theater', '303 Broadway', 'New York', 'NY', '10007', '/images/grand_theater.jpg');
+      ('Echo Lounge', '123 Main St', 'Dallas', 'TX', '75201', '/images/echo_lounge.jpg'),
+      ('House of Blues', '2200 N Lamar St', 'Dallas', 'TX', '75202', '/images/house_of_blues.jpg'),
+      ('Pavilion', '1001 Performance Pl', 'Dallas', 'TX', '75210', '/images/pavilion.jpg'),
+      ('American Airlines Center', '2500 Victory Ave', 'Dallas', 'TX', '75219', '/images/americanairlines.jpg');
     `);
 
-        // Insert events with updated dates and times
+        // Insert events with properly formatted dates and times
         await pool.query(`
       INSERT INTO events (title, date, time, location_id, image) VALUES
-      ('Festival X', '2024-12-10', '18:30:00', 1, '/images/festival_x.jpg'),
-      ('Jazz Night', '2024-12-15', '19:30:00', 2, '/images/jazz_night.jpg'),
-      ('Rock Fest', '2024-12-20', '20:00:00', 3, '/images/rock_fest.jpg'),
-      ('Broadway Show', '2024-12-25', '21:30:00', 4, '/images/broadway_show.jpg'),
-      ('New Year Bash', '2024-12-31', '22:00:00', 3, '/images/new_year_bash.jpg');  
+      ('Concert A', '2024-11-15', '19:00:00', 1, '/images/concert_a.jpg'),
+      ('Concert B', '2024-11-20', '20:00:00', 2, '/images/concert_b.jpg'),
+      ('Concert C', '2024-11-25', '18:00:00', 3, '/images/concert_c.jpg'),
+      ('Concert D', '2024-11-30', '21:00:00', 4, '/images/concert_d.jpg'),
+      ('Concert E', '2024-12-01', '18:00:00', 2, '/images/concert_e.jpg');  
     `);
 
         console.log("Data seeded successfully!");

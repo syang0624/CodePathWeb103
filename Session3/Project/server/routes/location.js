@@ -1,11 +1,12 @@
 import express from "express";
 import {
-    getLocation,
+    getLocations,
     getLocationById,
-} from "../controllers/locationController.js";
+} from "../controllers/locationsController.js";
 
-const locationRouter = express.Router();
-locationRouter.get("/location", getLocation);
-locationRouter.get("/location/:id", getLocationById);
+const router = express.Router();
 
-export default locationRouter;
+router.get("/locations", getLocations);
+router.get("/locations/:id", getLocationById);
+
+export default router;

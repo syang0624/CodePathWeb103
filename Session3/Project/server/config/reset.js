@@ -1,3 +1,4 @@
+// server/config/reset.js
 import { pool } from "./database.js";
 
 const createTables = async () => {
