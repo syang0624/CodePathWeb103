@@ -1,77 +1,92 @@
 .create-car-container {
-    background: rgba(0, 0, 0, 0.9);
-    padding: 30px;
-    border-radius: 15px;
-    max-width: 800px;
-    margin: 0 auto;
+    background: linear-gradient(
+        135deg,
+        #1c1c1c,
+        #333333
+    ); /* Subtle gradient for modern look */
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 900px;
+    margin: 40px auto; /* Added margin for better spacing */
     color: white;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); /* Enhanced shadow for depth */
 }
 
 .create-car-container h2 {
     text-align: center;
-    margin-bottom: 30px;
-    font-size: 2rem;
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+    font-family: "Arial", sans-serif; /* Slightly modern font */
 }
 
 form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px; /* More space between form elements */
 }
 
 .options-section {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    gap: 15px; /* Consistent spacing between option categories */
 }
 
 .option-category {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    flex: 1 1 45%; /* Allow categories to adjust flexibly */
 }
 
 .category-button {
-    background-color: #c21807;
+    background-color: #d32f2f; /* More vibrant red for emphasis */
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
+    padding: 12px 25px;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .category-button:hover {
     background-color: black;
+    transform: scale(1.05); /* Slight hover effect */
 }
 
 .error-message {
-    color: red;
+    color: #ff4d4d; /* Lighter red for better visibility */
     font-weight: bold;
+    font-size: 1rem;
 }
 
 .create-button {
-    background-color: #8b0000;
+    background-color: #a40000; /* Slightly lighter than before for better contrast */
     color: white;
-    padding: 15px;
-    font-size: 1.2rem;
+    padding: 18px;
+    font-size: 1.3rem;
     border: none;
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: 10px;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .create-button:hover {
     background-color: black;
+    transform: scale(1.05); /* Enlarges on hover */
 }
 
 .price-display {
     position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background-color: #990000;
+    bottom: 30px;
+    left: 30px;
+    background-color: #cc0000;
     color: white;
-    padding: 10px 20px;
-    border-radius: 10px;
-    font-size: 1.5rem;
-    z-index: 1000; /* Ensure it stays on top */
+    padding: 15px 30px;
+    border-radius: 12px;
+    font-size: 1.6rem;
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Adds shadow for emphasis */
 }

@@ -1,55 +1,69 @@
 .view-all-cars-container {
-    padding: 20px;
+    padding: 30px;
+    /* background-color: #f8f8f8; Light background for contrast */
 }
 
 h2 {
     width: 100%;
     text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-family: "Arial", sans-serif; /* Modern font */
 }
 
 .cars-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(300px, 1fr)
+    ); /* Responsive grid */
+    gap: 25px;
     justify-content: center;
 }
 
 .car-card {
-    background: rgba(0, 0, 0, 0.85);
-    border-radius: 10px;
-    padding: 20px;
+    background: linear-gradient(
+        135deg,
+        #1f1f1f,
+        #292929
+    ); /* Subtle gradient for depth */
+    border-radius: 15px;
+    padding: 25px;
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr; /* 3-column layout */
+    grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
-    width: 90%; /* Wider card */
+    width: 100%; /* Full width for grid */
     max-width: 1000px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
     color: white;
-    min-height: 200px; /* Ensure card stays wider than tall */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    min-height: 220px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .car-card:hover {
-    transform: scale(1.05); /* Slightly enlarge on hover */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* Make shadow stronger */
+    transform: scale(1.05); /* Enhanced hover effect */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7); /* Stronger shadow on hover */
 }
+
 .car-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    gap: 10px; /* Spacing between info elements */
 }
 
 h3 {
     margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 .car-price {
-    background-color: rgba(255, 223, 0, 0.2);
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 1.2rem;
+    background-color: rgba(255, 223, 0, 0.3);
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 1.3rem;
     color: #f7c14f;
     font-weight: bold;
 }
@@ -59,28 +73,28 @@ h3 {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
 }
 
 .car-options {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .car-card img {
-    width: 70px; /* Adjust image size */
-    height: 70px;
+    width: 80px;
+    height: 80px;
     object-fit: cover;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 .option p {
-    margin: 5px 0;
+    margin: 8px 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 70px; /* Prevents text overflow */
+    width: 80px;
     text-align: center;
 }
 
@@ -88,7 +102,7 @@ h3 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
     align-items: center;
 }
 
@@ -96,13 +110,12 @@ h3 {
 .delete-button {
     background-color: #c21807;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 25px;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
-    width: 120px; /* Uniform button size */
-    text-align: center;
-    font-size: 1rem;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .delete-button {
@@ -112,90 +125,30 @@ h3 {
 .edit-button:hover,
 .delete-button:hover {
     background-color: black;
+    transform: scale(1.05); /* Slight enlargement on hover */
 }
 
 .car-details-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    height: 100vh;
-}
-
-.car-card {
-    background: rgba(0, 0, 0, 0.85);
-    border-radius: 10px;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr; /* Use the same structure as in ViewCars */
-    align-items: center;
-    width: 90%;
-    max-width: 1000px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    color: white;
-    position: relative;
-}
-
-.car-options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.option {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.option img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.car-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.edit-button,
-.delete-button {
-    background-color: #c21807;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    width: 100px;
-    text-align: center;
-    font-size: 1rem;
-}
-
-.delete-button {
-    background-color: #8b0000;
-}
-
-.edit-button:hover,
-.delete-button:hover {
-    background-color: black;
+    padding: 40px;
+    height: auto;
 }
 
 .details-button {
     background-color: #007bff;
     color: white;
-    padding: 10px 15px;
+    padding: 12px 20px;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
-    width: 100px;
-    text-align: center;
-    font-size: 1rem;
-    margin-bottom: 10px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .details-button:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
 }
