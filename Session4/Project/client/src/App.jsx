@@ -1,27 +1,39 @@
 import React from "react";
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    Navigate,
-} from "react-router-dom";
+import { useRoutes } from "react-router-dom";
+import Navigation from "./components/Navigation";
 import ViewCars from "./pages/ViewCars";
-import CarDetails from "./pages/CarDetails";
-import CreateCar from "./pages/CreateCar";
 import EditCar from "./pages/EditCar";
+import CreateCar from "./pages/CreateCar";
+import CarDetails from "./pages/CarDetails";
+import "./App.css";
 
-function App() {
+const App = () => {
+    let element = useRoutes([
+        {
+            path: "/",
+            element: <CreateCar title="BOLT BUCKET | Customize" />,
+        },
+        {
+            path: "/cars",
+            element: <ViewCars title="BOLT BUCKET |  Cars" />,
+        },
+        {
+            path: "/cars/:id",
+            element: <CarDetails title="BOLT BUCKET | View" />,
+        },
+        {
+            path: "/edit/:id",
+            element: <EditCar title="BOLT BUCKET | Edit" />,
+        },
+    ]);
+
     return (
-        <Routes>
-            {/* Add a route for the root path */}
-            <Route path="/" element={<Navigate to="/cars" />} />
-            {/* Other routes */}
-            <Route path="/cars" element={<ViewCars />} />
-            <Route path="/cars/:id" element={<CarDetails />} />
-            <Route path="/cars/new" element={<CreateCar />} />
-            <Route path="/cars/edit/:id" element={<EditCar />} />
-        </Routes>
+        <div className="app">
+            <Navigation />
+
+            {element}
+        </div>
     );
-}
+};
 
 export default App;

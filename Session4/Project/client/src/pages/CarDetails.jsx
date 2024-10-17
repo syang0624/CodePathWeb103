@@ -1,31 +1,90 @@
 import React, { useEffect, useState } from "react";
-import { getCarById } from "../../services/CarsAPI.jsx";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import { fetchCarById, deleteCar } from "../services/CarsAPI";
+import "../css/CarDetails.css"; // Reuse the ViewCars CSS
 
 const CarDetails = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [car, setCar] = useState(null);
 
     useEffect(() => {
-        const fetchCar = async () => {
-            const data = await getCarById(id);
-            setCar(data);
+        const getCar = async () => {
+            try {
+                const data = await fetchCarById(id);
+                setCar(data);
+            } catch (error) {
+                console.error("Error fetching car:", error);
+            }
         };
-        fetchCar();
+        getCar();
     }, [id]);
 
-    if (!car) {
-        return <div>Loading...</div>;
-    }
+    const handleDelete = async () => {
+        try {
+            await deleteCar(id);
+            alert("Car deleted successfully!");
+            navigate("/cars");
+        } catch (error) {
+            console.error("Error deleting car:", error);
+            alert("Failed to delete car.");
+        }
+    };
+
+    if (!car) return <p>Loading...</p>;
 
     return (
-        <div>
-            <h1>{car.name}</h1>
-            <p>Exterior: {car.exterior}</p>
-            <p>Wheels: {car.wheels}</p>
-            <p>Roof: {car.roof}</p>
-            <p>Interior: {car.interior}</p>
-            <p>Price: ${car.price}</p>
+        <div className="car-details-container">
+            <div className="car-card">
+                {/* Column 1: Title and price */}
+                <div className="car-info">
+                    <h3>
+                        {car.is_convertible ? "🏎 " : "🚙 "} {car.name}
+                    </h3>
+                    <p className="car-price">
+                        Total Price: <span>${car.total_price}</span>
+                    </p>
+                </div>
+
+                {/* Column 2: Convertible and 2x2 grid */}
+                <div className="car-options-container">
+                    <p>Convertible: {car.is_convertible ? "Yes" : "No"}</p>
+                    <div className="car-options">
+                        <div className="option">
+                            <img
+                                src={car.exterior_image}
+                                alt={car.exterior_name}
+                            />
+                            <p>{car.exterior_name}</p>
+                        </div>
+                        <div className="option">
+                            <img src={car.roof_image} alt={car.roof_name} />
+                            <p>{car.roof_name}</p>
+                        </div>
+                        <div className="option">
+                            <img src={car.wheels_image} alt={car.wheels_name} />
+                            <p>{car.wheels_name}</p>
+                        </div>
+                        <div className="option">
+                            <img
+                                src={car.interior_image}
+                                alt={car.interior_name}
+                            />
+                            <p>{car.interior_name}</p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Column 3: Edit and delete buttons */}
+                <div className="car-actions">
+                    <Link to={`/edit/${car.id}`} className="edit-button">
+                        Edit
+                    </Link>
+                    <button onClick={handleDelete} className="delete-button">
+                        Delete
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };

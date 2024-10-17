@@ -1,6 +1,7 @@
 import React from "react";
 import "../App.css";
 import "../css/Navigation.css";
+import { Link } from "react-router-dom"; // Use Link instead of <a> for client-side routing
 
 const Navigation = () => {
     return (
@@ -12,15 +13,16 @@ const Navigation = () => {
             </ul>
 
             <ul>
+                {/* Optionally remove the "Customize" link or keep it pointing to "/" */}
                 <li>
-                    <a href="/" role="button">
+                    <Link to="/" role="button">
                         Customize
-                    </a>
+                    </Link>
                 </li>
                 <li>
-                    <a href="/cars" role="button">
+                    <Link to="/cars" role="button">
                         View Cars
-                    </a>
+                    </Link>
                 </li>
             </ul>
         </nav>
