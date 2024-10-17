@@ -3,7 +3,8 @@ import path from "path";
 import favicon from "serve-favicon";
 import dotenv from "dotenv";
 import cors from "cors"; // Import cors
-import router from "./routes/cars.js"; // Import the router
+import carsRouter from "./routes/carsRoutes.js"; // Import the router
+import optionsRouter from "./routes/optionsRoutes.js"; // Import the router
 
 dotenv.config();
 
@@ -13,7 +14,8 @@ const app = express();
 
 app.use(cors()); // Enable CORS
 app.use(express.json());
-app.use("/api/cars", router); // Use the router under /api/cars
+app.use("/api", carsRouter);
+app.use("/api", optionsRouter);
 
 if (process.env.NODE_ENV === "development") {
     app.use(favicon(path.resolve("../", "client", "public", "lightning.png")));

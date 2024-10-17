@@ -1,32 +1,43 @@
 import { pool } from "./database.js";
-import { populateTables } from "./populate.js"; // Import the populateTables function
 
 const createTables = async () => {
     try {
         // Drop existing tables if they exist
-        await pool.query("DROP TABLE IF EXISTS cars;");
+        await pool.query("DROP TABLE IF EXISTS custom_cars, options;");
 
-        // Create the cars table
+        // Create the options table with the updated schema
         await pool.query(`
-            CREATE TABLE cars (
+            CREATE TABLE options (
                 id SERIAL PRIMARY KEY,
-                name VARCHAR(255) NOT NULL,
-                exterior VARCHAR(255),
-                wheels VARCHAR(100),
-                roof VARCHAR(100),
-                interior VARCHAR(20),
-                price VARCHAR(255)
+                category VARCHAR(50) NOT NULL,
+                name VARCHAR(100) NOT NULL,
+                price DECIMAL(10, 2) NOT NULL,
+                image_url TEXT,
+                is_convertible_only BOOLEAN DEFAULT FALSE,
+                is_non_convertible_only BOOLEAN DEFAULT FALSE
             );
         `);
 
-        console.log("Tables created successfully!");
+        // Create the custom_cars table
+        await pool.query(`
+            CREATE TABLE custom_cars (
+                id SERIAL PRIMARY KEY,
+                name VARCHAR(100) NOT NULL,
+                is_convertible BOOLEAN NOT NULL,
+                exterior_id INTEGER REFERENCES options(id),
+                roof_id INTEGER REFERENCES options(id),
+                wheels_id INTEGER REFERENCES options(id),
+                interior_id INTEGER REFERENCES options(id),
+                total_price DECIMAL(10, 2) NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );
+        `);
 
-        // Populate the tables after creating them
-        await populateTables();
+        console.log("Tables dropped and created successfully!");
     } catch (err) {
         console.error("Error creating tables:", err);
     } finally {
-        // Only close the pool here, after everything is done
+        // Close the pool after everything is done
         pool.end();
     }
 };
