@@ -31,7 +31,7 @@ export const getOptionById = async (req, res) => {
     const { category, id } = req.params;
     const optionId = parseInt(id, 10); // Parse the ID to an integer
     const formattedCategory =
-        category.charAt(0).toUpperCase() + category.slice(1).toLowerCase(); // Capitalize category
+        category.charAt(0).toLowerCase() + category.slice(1).toLowerCase(); // Capitalize category
 
     try {
         const result = await pool.query(
